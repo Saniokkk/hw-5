@@ -311,7 +311,7 @@ img {
     position: relative;
 }
 
-.work-subtitle{
+.work-overlay{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -320,11 +320,15 @@ img {
     justify-content: center;
     width: 100%;
     height: 70px;
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.work-subtitle{
     font-size: 14px;
+    font-weight: 700;
     line-height: 16px;
     text-transform: uppercase;
     color: var(--secondary-color);
-    background-color: rgba(47, 48, 58, 0.8);
 }
 
 /* -----TEAM----- */
@@ -502,10 +506,9 @@ img {
     letter-spacing: 0.03em;
     background-color: var(--project-btn-bg-color);
     color: var(--title-color);
-    padding: 6px 22px;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    padding: 6px 22px;    
     border-radius: 4px;
-    transition-property: color, background-color;
+    transition-property: color, background-color, box-shadow;
     transition-duration: var(--duration);
     transition-timing-function: var(--timing-func);
 }
@@ -514,6 +517,7 @@ img {
 .projects-btn:focus {
     background-color: var(--accent-color);
     color: var(--secondary-color);
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .projects-list{
     display: flex;
@@ -536,28 +540,29 @@ img {
     transition-timing-function: var(--timing-func);
 }
 
-.project-overlay{
+.project-overlay-container{
     position: relative;
     overflow: hidden;
 }
 
-.project-overlay-text{
+.project-overlay{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     padding: 63px 24px;
-    font-size: 18px;
-    line-height: 1.56;
-    
-    color: #FFFFFF;
-    transform: translateY(100%);
+    transform: translateY(101%);
     background: rgba(33, 150, 243, 0.9);
     transition-property: transform;
     transition-duration: var(--duration);
     transition-timing-function: var(--timing-func);
+}
 
+.project-overlay-text{
+    font-size: 18px;
+    line-height: 1.56;
+    color: #FFFFFF;
 }
 
 .projects-link:hover    ,
@@ -566,8 +571,8 @@ img {
                 0px 4px 4px rgb(0 0 0 / 6%), 
                 1px 4px 6px rgb(0 0 0 / 16%);
 }
-.projects-link:hover .project-overlay-text,
-.projects-link:focus .project-overlay-text{
+.projects-link:hover .project-overlay,
+.projects-link:focus .project-overlay{
 transform: translateY(0)
 }
 
@@ -656,7 +661,10 @@ transform: translateY(0)
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     opacity: 1;
-    transition: opacity var(--transition-duration) var(--timing-function);
+    transition-property: opacity, visibility;
+    /* transition: opacity var(--duration) var(--timing-funcn), visibility var(--duration) var(--timing-funcn); */
+    transition-duration: var(--duration);
+    transition-timing-function: var(--timing-func);
 }
 
 .modal {
@@ -687,6 +695,14 @@ transform: translateY(0)
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     background-color: var(--primary-background-color);
+    transition-property: fill;
+    transition-duration: var(--duration);
+    transition-timing-function: var(--timing-func);
+}
+
+.btn-close:hover,
+.btn-close:focus {
+    fill: var(--accent-color);
 }
 
 .is-hidden{
@@ -698,3 +714,6 @@ transform: translateY(0)
 .backdrop.is-hidden .modal {
     transform: translate(150%, 150%) scale(0.5) rotate(180deg) matrix(1, 2, 3, 4, 5, 6);
 }
+
+
+
